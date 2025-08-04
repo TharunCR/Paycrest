@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Back - Paycrest</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class = "login-body">
+
+<div class="login-container">
+  <h1>Welcome Back</h1>
+  <p class="subtitle">Please enter your details to sign in to your account.</p>
+
+  <div th:if="${param.error}" class="alert alert-danger" role="alert">
+    Invalid username or password.
+  </div>
+  <div th:if="${param.logout}" class="alert alert-success" role="alert">
+    You have been logged out successfully.
+  </div>
+
+  <form th:action="@{/login}" method="post" class="login-form">
+    <div class="input-group">
+      <input type="text" id="username" name="username" required autofocus placeholder="Username">
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" name="password" required placeholder="Password">
+    </div>
+    <button type="submit" class="login-btn">Sign In</button>
+  </form>
+
+  <div class="register-link">
+    Don't have an account? <a th:href="@{/register}">Sign Up</a>
+  </div>
+</div>
+
+</body>
+</html>

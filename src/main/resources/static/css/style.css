@@ -1,0 +1,398 @@
+/* Import a clean, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Define Color Palette as CSS Variables */
+:root {
+    --bg-light: #f8f9fa;
+    --text-dark: #2C2B30;
+    --text-muted: #6c757d;
+    --accent-coral: #F58F7C;
+    --accent-pink: #F2C4CE;
+    --border-color: #dee2e6;
+}
+
+/* --- General & Body Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* --- Login & Register Page Styles --- */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.login-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.login-container .subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.login-form .input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-coral);
+    box-shadow: 0 0 0 4px rgba(245, 143, 124, 0.2);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--accent-coral);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #e57f6c; /* Darker coral */
+    transform: scale(1.02);
+}
+
+.register-link {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.register-link a {
+    color: var(--accent-coral);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* --- App Navigation Bar --- */
+body {
+    padding-top: 70px; /* Prevent content from hiding behind the fixed navbar */
+}
+/* Login page doesn't need this padding */
+.login-body {
+    padding-top: 0;
+}
+
+.navbar {
+    width: 100%;
+    padding: 1rem 0;
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.user-info span {
+    color: var(--text-muted);
+}
+
+.logout-btn-nav {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn-nav:hover {
+    background-color: var(--accent-coral);
+    color: #fff;
+    border-color: var(--accent-coral);
+}
+
+
+/* --- Dashboard Styles --- */
+.balance-display {
+    text-align: center;
+    padding: 2.5rem;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.balance-label {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.balance-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.history-link {
+    color: var(--accent-coral);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.action-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+}
+
+.action-card h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.transfer-card {
+    grid-column: 1 / -1; /* Make the transfer card span both columns */
+}
+
+.action-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--accent-coral);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.action-btn:hover {
+    background-color: #e57f6c; /* Darker coral */
+    transform: scale(1.02);
+}
+
+/* --- Transaction Page Styles --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+    margin: 0;
+}
+
+.back-link {
+    color: var(--accent-coral);
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: var(--accent-coral);
+    color: #fff;
+    border-color: var(--accent-coral);
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transaction-table th, .transaction-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transaction-table thead th {
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-bottom-width: 2px;
+}
+
+.transaction-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.transaction-table tbody tr:hover {
+    background-color: #f8f9fa; /* Slight hover effect */
+}
+
+
+/* --- General Components --- */
+.card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: var(--accent-pink);
+    border-color: #f5c2c7;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.text-end {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+    .transfer-card {
+        grid-column: auto;
+    }
+}
+
+/* ========================================= */
+/* Navigation Bar Links (Profile & History)  */
+/* ========================================= */
+
+/* This is the container for the navigation links in the header.
+   We use flexbox to align them neatly. */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Defines the space between the buttons */
+}
+
+/* This styles the actual "Transaction History" and "Profile" links. */
+.nav-link {
+    display: inline-block;
+    padding: 0.5rem 1rem; /* Controls the size of the button */
+    border-radius: 6px; /* Creates slightly rounded corners */
+    text-decoration: none; /* Removes the default underline from links */
+    font-weight: 500;
+    color: var(--text-dark); /* Uses the dark text color from your palette */
+    background-color: transparent; /* Starts with no background */
+    border: 1px solid transparent; /* Prevents size changes on hover */
+    transition: all 0.2s ease-in-out; /* Makes the hover effect smooth */
+}
+
+
+/* --- INTERACTIVE STATES --- */
+
+/* This defines the style for when you hover your mouse over the buttons. */
+.nav-link:hover {
+    /* Uses the lighter pink from your palette for a subtle hover effect */
+    background-color: var(--accent-pink);
+    /* Lifts the button slightly for a 3D effect */
+    transform: translateY(-2px);
+}
+
+/* This defines the style for the exact moment you click a button. */
+.nav-link:active {
+    /* Uses the stronger coral color for the click feedback */
+    background-color: var(--accent-coral);
+    /* Changes the text to light for better contrast */
+    color: var(--bg-light);
+    /* Resets the lift effect */
+    transform: translateY(0);
+}
+
+/* ========================================= */
+/* Optional: Style for the Logout Button     */
+/* ========================================= */
+
+/* You can use this to style the logout button to look different from the nav links. */
+.logout-btn-nav {
+    padding: 0.5rem 1rem;
+    font-family: inherit; /* Ensures it uses the same font as the rest of the page */
+    font-size: inherit;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid var(--accent-coral); /* A border that matches your accent color */
+    background-color: transparent;
+    color: var(--accent-coral);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-btn-nav:hover {
+    background-color: var(--accent-coral);
+    color: var(--bg-light); /* Light text on hover */
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction History - Paycrest</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a class="navbar-brand" th:href="@{/dashboard}">Paycrest</a>
+    <div class="user-info">
+      <span>Welcome, <strong th:text="${#authentication.name}">User</strong>!</span>
+      <form th:action="@{/logout}" method="post" style="display: inline-block; margin-left: 1rem;">
+        <button type="submit" class="logout-btn-nav">Logout</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding-top: 2rem;">
+
+  <div class="page-header">
+    <h1>Transaction History</h1>
+    <a th:href="@{/dashboard}" class="back-link">Back to Dashboard</a>
+  </div>
+
+  <div class="card">
+    <table class="transaction-table">
+      <thead>
+      <tr>
+        <th>Date & Time</th>
+        <th>Description</th>
+        <th class="text-end">Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="tx : ${transactions}">
+        <td th:text="${#temporals.format(tx.timestamp, 'dd-MMM-yyyy HH:mm')}"></td>
+        <td th:text="${tx.type}"></td>
+        <td class="text-end" th:text="|₹${#numbers.formatDecimal(tx.amount, 1, 'COMMA', 2, 'POINT')}|"></td>
+      </tr>
+      <tr th:if="${#lists.isEmpty(transactions)}">
+        <td colspan="3" class="text-center">You have no transactions yet.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>
