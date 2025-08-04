@@ -58,3 +58,6 @@ Login secured using Spring Security
 Passwords are stored using BCrypt hashing
 
 Role-based access (ADMIN, USER)
+
+---
+Tharun C R
