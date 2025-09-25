@@ -104,5 +104,6 @@ public class User implements UserDetails {
 
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
+
     }
 }

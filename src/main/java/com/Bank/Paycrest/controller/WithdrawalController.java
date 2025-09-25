@@ -38,5 +38,6 @@ class WithdrawalController {
             return "dashboard";
         }
         return "redirect:/dashboard";
+
     }
 }

@@ -77,5 +77,6 @@ public class UserService {
 
         userToUpdate.setFullName(fullName);
         userRepository.save(userToUpdate);
+
     }
 }
