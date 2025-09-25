@@ -40,6 +40,7 @@ class DepositController {
             return "dashboard";
         }
         return "redirect:/dashboard";
+
     }
 }
 
