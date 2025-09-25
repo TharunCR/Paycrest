@@ -36,5 +36,6 @@ class DashboardController {
         Account account = accountRepository.findByUser(user).orElseThrow(() -> new RuntimeException("Account could not be found."));
         model.addAttribute("account", account);
         return "dashboard";
+
     }
 }
