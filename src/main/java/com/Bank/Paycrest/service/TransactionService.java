@@ -96,5 +96,6 @@ public class TransactionService {
     public List<Transaction> getTransactionHistory(Account account) {
         // This method remains the same and is correct.
         return transactionRepository.findByAccountId(account.getId());
+
     }
 }

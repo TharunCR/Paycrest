@@ -38,5 +38,6 @@ public class TransferController {
             return "dashboard";
         }
         return "redirect:/dashboard";
+
     }
 }

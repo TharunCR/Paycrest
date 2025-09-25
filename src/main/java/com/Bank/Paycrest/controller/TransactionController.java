@@ -29,7 +29,7 @@ public class TransactionController {
         Optional<Account> accountOpt = accountRepository.findByUser(user);
 
         if (accountOpt.isPresent()) {
-            // If the account exists, get its transaction history
+            // If the account exists, get its transaction history.
             model.addAttribute("transactions", transactionService.getTransactionHistory(accountOpt.get()));
         } else {
             // If no account is found, return an empty list to avoid errors
