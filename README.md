@@ -55,7 +55,7 @@ The project follows a layered architecture:
 🛡️ Security
 Login secured using Spring Security
 
-Passwords are stored using BCrypt hashing
+Passwords are stored using BCrypt hashing 
 
 Role-based access (ADMIN, USER)
 
