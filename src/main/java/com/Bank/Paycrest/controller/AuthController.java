@@ -36,5 +36,6 @@ public class AuthController {
             model.addAttribute("error", e.getMessage());
             return "register";
         }
+
     }
 }
