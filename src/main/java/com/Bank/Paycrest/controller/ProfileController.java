@@ -62,7 +62,7 @@ public class ProfileController {
     }
 
     /**
-     * Updates the user's profile information (e.g., full name).
+     * Updates the user's profile information (e.g., full name)
      */
     @PostMapping("/profile/update")
     public String updateUserProfile(@AuthenticationPrincipal User currentUser,
