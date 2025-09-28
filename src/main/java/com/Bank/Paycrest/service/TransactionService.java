@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+
 @Service
 public class TransactionService {
 
@@ -27,6 +29,9 @@ public class TransactionService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FraudDetectionService fraudDetectionService;
 
     @Transactional
     public void deposit(Account account, BigDecimal amount, String pin) {
@@ -65,22 +70,34 @@ public class TransactionService {
 
     @Transactional
     public void transferAmount(Account fromAccount, String toUsername, BigDecimal amount, String pin) {
-        if (!userService.verifyTransactionPin(fromAccount.getUser(), pin)) {
-            throw new RuntimeException("Invalid Transaction PIN");
-        }
-        if (fromAccount.getBalance().compareTo(amount) < 0) {
-            throw new RuntimeException("Insufficient funds");
-        }
+
+        // 1. RECIPIENT VALIDITY CHECK (MOVED UP)
         User toUser = userRepository.findByUsername(toUsername)
                 .orElseThrow(() -> new RuntimeException("Recipient user not found"));
         Account toAccount = accountRepository.findByUser(toUser)
                 .orElseThrow(() -> new RuntimeException("Recipient account not found"));
 
+        // 2. PIN CHECK
+        if (!userService.verifyTransactionPin(fromAccount.getUser(), pin)) {
+            throw new RuntimeException("Invalid Transaction PIN");
+        }
+
+        // 3. BALANCE CHECK
+        if (fromAccount.getBalance().compareTo(amount) < 0) {
+            throw new RuntimeException("Insufficient funds");
+        }
+
+        // 4. AI FRAUD CHECK (MOVED DOWN - Only check risk if everything else is valid)
+        if (fraudDetectionService.isTransferUnauthorized(fromAccount, amount)) {
+            throw new RuntimeException("Transaction flagged as UNAUTHORIZED by AI system. Cannot proceed.");
+        }
+
+        // --- Execution continues here if all 4 checks pass ---
+
         // Update balances
         fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
         toAccount.setBalance(toAccount.getBalance().add(amount));
 
-        // Create and associate debit and credit transactions
         Transaction debit = new Transaction(amount, "Transfer Out to " + toUsername, LocalDateTime.now(), fromAccount);
         Transaction credit = new Transaction(amount, "Transfer In from " + fromAccount.getUser().getUsername(), LocalDateTime.now(), toAccount);
 
